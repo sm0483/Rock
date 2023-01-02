@@ -34,6 +34,7 @@ const { getResult, appendWithOld } = require('../utils/rocker');
 
 
 const result=asyncWrapper(async(req,res)=>{
+    if(Object.values(req.body).length==0) throw new CustomError("Invalid request",StatusCodes.BAD_REQUEST);
     const {game,id}=req.body;
     const {player1,player2,player3,player4} =game;
     if(!id || !player1 || !player2 || !player3 || !player4) throw new CustomError("Invalid request",StatusCodes.BAD_REQUEST);

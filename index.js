@@ -4,8 +4,10 @@ const path = require("path");
 const dotenv = require("dotenv");
 const root_dir = __dirname.split('src')[0]
 dotenv.config({ path: path.join(root_dir, `.env`) });
+const bodyParser=require('body-parser');
 const {connectDb} = require("./config/db");
 const gameRoute=require("./routes/routes");
+
 
 
 
@@ -17,8 +19,8 @@ const gameRoute=require("./routes/routes");
 const errorHandler = require("./middlewares/err");
 const pageNotFound = require("./middlewares/pageNotFound");
 
-app.use(express.json());
-app.use(express.urlencoded({extended:false}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
 
 
